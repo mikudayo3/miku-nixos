@@ -4,7 +4,16 @@
 
 { config, lib, pkgs, ... }:
 
+let
+  androidComposition = pkgs.androidenv.composeAndroidPackages {
+    buildToolsVersions = [ "34.0.0" ];
+    platformVersions = [ ];
+    includeEmulator = false;
+  };
+in
 {
+  nixpkgs.config.android_sdk.accept_license = true;
+
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
@@ -64,13 +73,11 @@
   };
 
   # unfree programs
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
-    "steam"
-    "steam-unwrapped"
-  ];
-
+  nixpkgs.config.allowUnfree = true;
+  
   # firefox browser
   programs.firefox.enable = true;
+  programs.obs-studio.enable = true;
   
   # wayland compositor
   programs.niri.enable = true;
@@ -130,6 +137,7 @@
     pciutils
     htop
     lshw
+    libva-utils
 
     # 디스크 관련
     btrfs-progs
@@ -140,7 +148,9 @@
     git
     
     android-tools    
-
+    androidComposition.androidsdk
+        
+    jdk
     # xwayland
     xwayland-satellite
 
@@ -204,6 +214,4 @@
   system.stateVersion = "26.05"; # Did you read the comment?
 
 }
-
-
 

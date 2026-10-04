@@ -5,6 +5,8 @@
     fastfetch
     tree
     gh
+
+    apktool
    
     alacritty
     fuzzel
