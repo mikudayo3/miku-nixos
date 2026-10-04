@@ -78,6 +78,7 @@ in
   # firefox browser
   programs.firefox.enable = true;
   programs.obs-studio.enable = true;
+  programs.nix-ld.enable = true;
   
   # wayland compositor
   programs.niri.enable = true;
@@ -144,13 +145,16 @@ in
     smartmontools
     util-linux
     
-    # git
+    # git, 개발도구
     git
     
     android-tools    
     androidComposition.androidsdk
         
     jdk
+    uv
+    cargo
+    rustc
     # xwayland
     xwayland-satellite
 
