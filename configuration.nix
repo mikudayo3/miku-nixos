@@ -88,9 +88,10 @@ in
 
   # adb
   # programs.adb.enable = true;
-
+  
+  
   # display manager
-  #  services.displayManager.plasma-login-manager.enable = true; ㅗㅗㅗㅗ
+  # services.displayManager.plasma-login-manager.enable = true; ㅗㅗㅗㅗ
   services.greetd = {
     enable = true;
     settings = {
@@ -155,6 +156,8 @@ in
     uv
     cargo
     rustc
+    glib
+    cmake
     # xwayland
     xwayland-satellite
 
@@ -162,6 +165,8 @@ in
     nautilus
 
     ffmpeg
+
+    
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
